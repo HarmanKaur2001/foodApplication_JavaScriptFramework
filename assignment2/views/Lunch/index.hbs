@@ -1,0 +1,32 @@
+<h1>{{title}}</h1>
+{{!-- TODO: add navigation to add a new lunch --}}
+<a href="/lunch/add">Add a new breakfast</a>
+{{!-- TODO: add a table to display breakfasts from MongoDB --}}
+<table class="table table-striped table-hover">
+  <thead>
+    <th>salad</th>
+    <th>yogurt</th>
+    <th>avocado</th>
+    <th>vegies</th>
+    <th>rice</th>
+    <th>soup</th>
+    <th></th>
+  </thead>
+  <tbody>
+  {{#each dataset}}
+    <tr>
+      <td>{{this.salad}}</Td>
+      <td>{{this.yogurt}}</Td>
+      <td>{{this.avocado}}</Td>
+      <td>{{this.vegies}}</Td>
+      <td>{{this.rice}}</Td>
+      <td>{{this.soup}}</Td>
+
+      <td>
+        <a href="/lunch/edit/{{this._id}}" class="btn btn-primary">Edit</a>
+        <a href="/lunch/delete/{{this._id}}" class="btn btn-danger" onclick="confirmDeletion()">Delete</a>
+      </td>
+    </tr>
+  {{/each}}
+  </tbody>
+</table>
