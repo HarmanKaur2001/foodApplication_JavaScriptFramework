@@ -46,6 +46,14 @@
     </label>
     <input name="juice" id="juice">
   </fieldset>
+  <fieldset>
+    <label for="status">Status: </label>
+    <select name="status" id="status">
+      {{createOption 'Like' breakfast.status }}
+      {{createOption 'not Tasty' breakfast.status}}
+      {{createOption 'Excellent taste' breakfast.status}}
+    </select>
+  </fieldset>
   {{! No need to specify Status since it has a default value }}
   {{! Button needs to be inside <form> element to trigger POST }}
   <button class="offset-3 btn btn-primary">

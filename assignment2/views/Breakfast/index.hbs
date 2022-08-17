@@ -11,6 +11,9 @@
     <th>oatmeal</th>
     <th>Fruits</th>
     <th>juice</th>
+        <th>status</th>
+
+
     <th></th>
   </thead>
   <tbody>
@@ -23,6 +26,8 @@
       <td>{{this.oatmeal}}</Td>
       <td>{{this.fruits}}</Td>
       <td>{{this.juice}}</Td>
+            <td>{{this.status}}</Td>
+
       <td>
         <a href="/breakfast/edit/{{this._id}}" class="btn btn-primary">Edit</a>
         <a href="/breakfast/delete/{{this._id}}" class="btn btn-danger" onclick="confirmDeletion()">Delete</a>
