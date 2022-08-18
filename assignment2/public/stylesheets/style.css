@@ -1,7 +1,12 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+ 
 }
+ page-top{
+  background-color: aquamarine;
+ }
+
 
 a {
   color: #00B7FF;
@@ -92,4 +97,16 @@ input[type=text]:focus {
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+}
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
 }
