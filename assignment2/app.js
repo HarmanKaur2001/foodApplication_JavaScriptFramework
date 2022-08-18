@@ -4,6 +4,13 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
+//import configurations:
+var config = require('./config/globals');
+
+
+//import passport
+var passport = require('passport');
+var session  = require('express-session');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -23,6 +30,26 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//passport is configured
+
+app.use(session({
+  secret: 'FoodOrderingSystem',
+  resave: false,
+  saveUninitialized: false
+}));
+
+// Initialize passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Link passport to the user model
+const User = require('./models/user');
+passport.use(User.createStrategy());
+
+// Set passport to write/read user data to/from session object
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/breakfast', breakfastRouter);
@@ -36,13 +63,14 @@ app.use(function(req, res, next) {
 });
 let userName = 'admin';
 let password = 'password';
-const constString = 'mongodb+srv://Harman:Harman12@cluster0.bisasrp.mongodb.net/FoodApp';
+//const constString = 'mongodb+srv://Harman:Harman12@cluster0.bisasrp.mongodb.net/FoodApp';
 // Option 2) Add connection string to Config file
 // const config = require('./config/globals');
 // let connectionString = config.db;
 
+
 // Use the connect method, and the two handlers to try to connect to the DB
-mongoose.connect(constString, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(config.db, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((message) => {
     console.log('Connected successfully!');
   })
