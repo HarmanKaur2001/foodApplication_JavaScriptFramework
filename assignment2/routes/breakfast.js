@@ -2,17 +2,30 @@ const express = require('express');
 const router = express.Router();
 // Add reference to the models
 const breakfast = require('../models/breakfast');
-//const Course = require('../models/course');
+const passport = require('passport');
+
+function IsLoggedIn(req,res,next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect('/login');
+}
+
 
 // Add GET for index
-router.get('/', (req, res, next) => {
+router.get('/', IsLoggedIn, (req, res, next) => {
 
     breakfast.find((err, breakfast) => {
         if (err) {
             console.log(err);
         }
         else {
-            res.render('breakfast/index', { title: 'Breakfast', dataset: breakfast });
+            res.render('breakfast/index',
+             { 
+                title: 'Breakfast', 
+                dataset: breakfast,
+                user : req.user
+            });
         }
     })
 });
@@ -24,7 +37,11 @@ router.get('/add', (req, res, next) => {
             console.log(err);
         }
         else {
-            res.render('breakfast/add', { title: 'Add a New item', breakfast: breakfast });
+            res.render('breakfast/add', { title: 'Add a New item',
+             breakfast: breakfast,
+             user : req.user
+        
+        });
         }
     }).sort({ name: -1 });
 });
@@ -72,7 +89,8 @@ router.get('/delete/:_id', (req, res, next) => {
 // GET handler for Edit operations
 router.get('/edit/:_id', (req, res, next) => {
     // Find the breakfast by ID
-    // Find available courses
+    // Find available breakfast
+
     // Pass them to the view
     breakfast.findById(req.params._id, (err, breakfasts) => {
         if (err) {
@@ -86,7 +104,8 @@ router.get('/edit/:_id', (req, res, next) => {
                 else {
                     res.render('breakfast/edit', {
                         title: 'Edit a breakfast',
-                        breakfasts: breakfasts
+                        breakfasts: breakfasts,
+                        user : req.user
                     });
                 }
             }).sort({ name: 1 });

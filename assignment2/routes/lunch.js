@@ -3,21 +3,30 @@ const router = express.Router();
 // Add reference to the models
 const lunch = require('../models/lunch');
 
+const passport = require('passport');
 
+function IsLoggedIn(req,res,next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect('/login');
+}
 // Add GET for index
-router.get('/', (req, res, next) => {
+router.get('/', IsLoggedIn, (req, res, next) => {
 
     lunch.find((err, lunch) => {
         if (err) {
             console.log(err);
         }
         else {
-            res.render('lunch/index', { title: 'Lunch', dataset: lunch });
+            res.render('lunch/index', { title: 'Lunch', 
+            dataset: lunch,
+            user : req.user });
         }
     })
 });
 
-router.get('/add', (req, res, next) => {
+router.get('/add', IsLoggedIn,(req, res, next) => {
     // Get list of Lunch items
     lunch.find((err, lunch) => {
         if (err) {
@@ -30,7 +39,7 @@ router.get('/add', (req, res, next) => {
 });
 
 // Add POST handler
-router.post('/add', (req, res, next) => {
+router.post('/add', IsLoggedIn, (req, res, next) => {
     // use the lunch module to save data to DB
     // call create method of the model 
     // and map the fields with data from the request
@@ -56,7 +65,7 @@ router.post('/add', (req, res, next) => {
 
 // GET handler for Delete operations
 // :_id is a placeholder for naming whatever is after the / in the path
-router.get('/delete/:_id', (req, res, next) => {
+router.get('/delete/:_id', IsLoggedIn, (req, res, next) => {
     // call remove method and pass id as a json object
     lunch.remove({ _id: req.params._id }, (err) => {
         if (err) {
@@ -69,7 +78,7 @@ router.get('/delete/:_id', (req, res, next) => {
 });
 
 // GET handler for Edit operations
-router.get('/edit/:_id', (req, res, next) => {
+router.get('/edit/:_id', IsLoggedIn, (req, res, next) => {
     // Find the lunch by ID
     // Find available courses
     // Pass them to the view
@@ -85,7 +94,8 @@ router.get('/edit/:_id', (req, res, next) => {
                 else {
                     res.render('lunch/edit', {
                         title: 'Edit a Lunch',
-                        lunches: lunches
+                        lunches: lunches,
+                        user : req.user
                     });
                 }
             }).sort({ name: 1 });
@@ -94,7 +104,7 @@ router.get('/edit/:_id', (req, res, next) => {
 });
 
 // POST handler for Edit operations
-router.post('/edit/:_id', (req,res,next) => {
+router.post('/edit/:_id', IsLoggedIn, (req,res,next) => {
     // find lunch based on ID
     // try updating with form values
     // redirect to /lunches

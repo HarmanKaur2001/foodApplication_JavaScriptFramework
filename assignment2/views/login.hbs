@@ -2,15 +2,15 @@
   {{title}}
 </h1>
 
-{{!-- Show error message if credentials are incorrect --}}
+{{! Show error message if credentials are incorrect }}
 {{#if messages}}
-    <div class="alert alert-danger">
-        Invalid credentials
-    </div>
+  <div class="alert alert-danger">
+    Invalid credentials
+  </div>
 {{else}}
-    <div class="alert alert-info">
-        Please enter your credentials
-    </div>
+  <div class="alert alert-info">
+    Please enter your credentials
+  </div>
 {{/if}}
 <form method="post">
   <fieldset class="form-group">
@@ -33,11 +33,10 @@
     Need an account?
     <a href="/register" title="Register">
       Register
-    </a>  
+    </a>
   </fieldset>
-  <a href="https://github.com/HarmanKaur2001">
-         <img alt=".." src="images/logoDark.png"
-         width=150" height="70">
-      </a>
+  <a href="/github">
+    <img alt=".." src="images/logoDark.png" width='150"' height="70" />
+  </a>
 
 </form>

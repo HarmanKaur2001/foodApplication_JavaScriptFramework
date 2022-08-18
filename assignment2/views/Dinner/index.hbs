@@ -1,6 +1,8 @@
 <h1>{{title}}</h1>
 {{!-- TODO: add navigation to add a new lunch --}}
+{{#if user}}
 <a href="/dinner/add">Add a new Dinner</a>
+{{/if}}
 {{!-- TODO: add a table to display breakfasts from MongoDB --}}
 <table class="table table-striped table-hover">
   <thead>
@@ -23,8 +25,10 @@
       <td>{{this.chillyChicken}}</Td>
 
       <td>
+        {{#if ../user}}
         <a href="/dinner/edit/{{this._id}}" class="button1">Edit</a>
         <a href="/dinner/delete/{{this._id}}" class="button1" onclick="confirmDeletion()">Delete</a>
+        {{/if}}
       </td>
     </tr>
   {{/each}}

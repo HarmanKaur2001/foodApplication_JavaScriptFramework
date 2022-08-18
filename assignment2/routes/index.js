@@ -6,7 +6,7 @@ const passport = require('passport');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Express', user: req.user });
 });
 router.get('/', function(req, res, next) {
   res.render('breakfast', { title: 'Order your breakfast' });
@@ -65,6 +65,27 @@ router.post('/register', (req, res, next) => {
       }
     });
 });
+
+// GET handler for logout
+router.get('/logout', (req, res, next) => {
+  req.logout(function (err) {
+    res.redirect('/login');
+  });
+});
+
+// GET handler for /github
+// call passport authenticate and pass the name of the stragety 
+// and the information we require from github
+router.get('/github', passport.authenticate('github', { scope: ['user.email'] }));
+
+// GET handler for /github/callback 
+// this is the url they come back to after entering their credentials
+router.get('/github/callback',
+  // callback to send user back to login if unsuccessful
+  passport.authenticate('github', { failureRedirect: '/login' }),
+  // callback when login is successful
+  (req, res, next) => { res.redirect('/') }
+);
 
 
 module.exports = router;
