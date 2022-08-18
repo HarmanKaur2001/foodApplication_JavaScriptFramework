@@ -1,0 +1,48 @@
+<h1>
+  {{title}}
+</h1>
+<form method="POST">
+  {{! Input names have to match the name of the fields in the mongo schema object }}
+  {{! Mapping is not automatic, but it's best practices }}
+  <fieldset>
+    <label for="macroni" class="col-2">
+      macroni
+    </label>
+    <input name="macroni" id="macroni" required />
+  </fieldset>
+  <fieldset>
+    <label for="pasta" class="col-2">
+      pasta:
+    </label>
+    <input name="pasta" id="pasta" required>
+  </fieldset>
+  <fieldset>
+    <label for="sloppyJos" class="col-2">
+      sloppyJos:
+    </label>
+    <input name="sloppyJos" id="sloppyJos">
+  </fieldset>
+   <fieldset>
+    <label for="vegies" class="col-2">
+      vegies:
+    </label>
+    <input name="vegies" id="vegies">
+  </fieldset>
+   <fieldset>
+    <label for="mashedPotato" class="col-2">
+      mashedPotato:
+    </label>
+    <input name="mashedPotato" id="rice">
+  </fieldset>
+   <fieldset>
+    <label for="chillyChicken" class="col-2">
+      chillyChicken:
+    </label>
+    <input name="chillyChicken" id="chillyChicken">
+  </fieldset>
+  {{! No need to specify Status since it has a default value }}
+  {{! Button needs to be inside <form> element to trigger POST }}
+  <button class="offset-3 btn btn-primary">
+    Save
+  </button>
+</form>
