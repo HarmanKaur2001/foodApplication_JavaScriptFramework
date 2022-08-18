@@ -1,11 +1,9 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: rgba(201, 76, 76, 0.3);
  
 }
- page-top{
-  background-color: aquamarine;
- }
 
 
 a {
@@ -109,4 +107,33 @@ input[type=text]:focus {
   content: "";
   clear: both;
   display: table;
+}
+
+.text{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: x-large;
+
+}
+h4{
+  font-family:'Times New Roman', Times, serif;
+  color:indianred;
+  text-align: center;
+}
+h1{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color:brown;
+  text-align: center;
+}
+h3{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-align: center;
+}
+
+.col-lg-4{
+  position: fixed;
+  width:100%;
+  background-color: rgba(0, 221, 255, 0.826);
+  color: black;
+  text-align: center;
+  
 }

@@ -75,7 +75,7 @@ router.post('/add', (req, res, next) => {
 // GET handler for Delete operations
 // :_id is a placeholder for naming whatever is after the / in the path
 router.get('/delete/:_id', (req, res, next) => {
-    // call remove method and pass id as a json object
+    // call remove method and pass id as a js on object
     breakfast.remove({ _id: req.params._id }, (err) => {
         if (err) {
             console.log(err);
