@@ -34,5 +34,5 @@ const projectsSchemaDefinition = {
 var projectsSchema = new mongoose.Schema(projectsSchemaDefinition);
 // Create new mongoose model using the schema object and
 // Import new model > provide name and schema
-module.exports = mongoose.model('lunch', projectsSchema);;
+module.exports = mongoose.model('dinner', projectsSchema);;
 // alternative > module.exports = mongoose.model('Project', projectsSchema);

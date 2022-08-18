@@ -8,55 +8,47 @@
     <label for="bread" class="col-2">
       Bread
     </label>
-    <input name="bread" id="bread" required />
+    <input name="bread" input type="text" id="bread" required />
   </fieldset>
   <fieldset>
     <label for="coffee" class="col-2">
       Coffee:
     </label>
-    <input name="coffee" id="coffee">
+    <input name="coffee" input type="text" id="coffee">
   </fieldset>
   <fieldset>
     <label for="tea" class="col-2">
       Tea:
     </label>
-    <input name="tea" id="tea">
+    <input name="tea" input type="text" id="tea">
   </fieldset>
    <fieldset>
     <label for="sandwich" class="col-2">
       sandwich:
     </label>
-    <input name="sandwich" id="sandwich">
+    <input name="sandwich" input type="text" id="sandwich">
   </fieldset>
    <fieldset>
     <label for="oatmeal" class="col-2">
       oatmeal:
     </label>
-    <input name="oatmeal" id="oatmeal">
+    <input name="oatmeal" input type="text" id="oatmeal">
   </fieldset>
    <fieldset>
     <label for="fruits" class="col-2">
       fruits:
     </label>
-    <input name="fruits" id="fruits">
+    <input name="fruits" input type="text" id="fruits">
   </fieldset>
    <fieldset>
     <label for="juice" class="col-2">
       juice:
     </label>
-    <input name="juice" id="juice">
-  </fieldset>
-  <fieldset>
-    <label for="status">Status: </label>
-    <select name="status" id="status">
-      {{createOption 'Like' breakfast.status }}
-      {{createOption 'not Tasty' breakfast.status}}
-      {{createOption 'Excellent taste' breakfast.status}}
-    </select>
+    <input name="juice" input type="text" id="juice">
   </fieldset>
   {{! No need to specify Status since it has a default value }}
   {{! Button needs to be inside <form> element to trigger POST }}
-  <button class="offset-3 btn btn-primary">
+  <button class="button">
     Save
   </button>
 </form>

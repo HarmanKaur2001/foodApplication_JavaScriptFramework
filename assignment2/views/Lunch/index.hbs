@@ -1,6 +1,6 @@
 <h1>{{title}}</h1>
 {{!-- TODO: add navigation to add a new lunch --}}
-<a href="/lunch/add">Add a new breakfast</a>
+<a href="/lunch/add">Add a new Lunch</a>
 {{!-- TODO: add a table to display breakfasts from MongoDB --}}
 <table class="table table-striped table-hover">
   <thead>
@@ -23,8 +23,8 @@
       <td>{{this.soup}}</Td>
 
       <td>
-        <a href="/lunch/edit/{{this._id}}" class="btn btn-primary">Edit</a>
-        <a href="/lunch/delete/{{this._id}}" class="btn btn-danger" onclick="confirmDeletion()">Delete</a>
+        <a href="/lunch/edit/{{this._id}}" class="button1">Edit</a>
+        <a href="/lunch/delete/{{this._id}}" class="button1" onclick="confirmDeletion()">Delete</a>
       </td>
     </tr>
   {{/each}}

@@ -12,7 +12,7 @@ router.get('/', (req, res, next) => {
             console.log(err);
         }
         else {
-            res.render('dinner/index', { title: 'Dinner', dataset: dinnner });
+            res.render('dinner/index', { title: 'Dinner', dataset: dinner });
         }
     })
 });
@@ -36,13 +36,12 @@ router.post('/add', (req, res, next) => {
     // and map the fields with data from the request
     // callback function will return an error if any or a newDinner object
     dinner.create({
-        bread: req.body.bread,
-        coffee: req.body.coffee,
-        tea: req.body.tea,
-        sandwich: req.body.sandwich,
-        oatmeal: req.body.oatmeal,
-        fruits: req.body.fruits,
-        juice: req.body.juice
+        macroni: req.body.macroni,
+        pasta: req.body.pasta,
+        sloppyJos: req.body.sloppyJos,
+        vegies: req.body.vegies,
+        mashedPotato: req.body.mashedPotato,
+        chillyChicken: req.body.chillyChicken,
     }, (err, newBreakfast) => {
         if (err) {
             console.log(err);
@@ -100,13 +99,12 @@ router.post('/edit/:_id', (req,res,next) => {
     // try updating with form values
     // redirect to /dinners
     dinner.findOneAndUpdate({_id: req.params._id}, {
-        bread: req.body.bread,
-        coffee: req.body.coffee,
-        tea: req.body.tea,
-        sandwich: req.body.sandwich,
-        oatmeal: req.body.oatmeal,
-        fruits: req.body.fruits,
-        juice: req.body.juice
+        macroni: req.body.macroni,
+        pasta: req.body.pasta,
+        sloppyJos: req.body.sloppyJos,
+        vegies: req.body.vegies,
+        mashedPotato: req.body.mashedPotato,
+        chillyChicken: req.body.chillyChicken,
     }, (err, updatedDinnner) => {
         if (err) {
             console.log(err)
